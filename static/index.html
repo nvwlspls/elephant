@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="moogitShows" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="moogitShows" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="moogitShows" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="moogitShows" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Moogit!</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap core CSS (Commented out until production) -->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <!-- Optional theme  (commented out until production)-->
+  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+  <link rel="stylesheet" href="../assets/css/bootstrap-theme.css">
+  <!-- Local CSS Changes-->
+  <link rel="stylesheet" href="app.css">
+
+</head>
+<body ngApp="moogitShows">
+  <div>
+  <div class="container" style="padding: 10px">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Project name</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </nav>
+    </div>
+  </div>
+
+
+
+  <!--<ul class="menu">-->
+    <!--<li><a href="#/home">home</a></li>-->
+    <!--<li><a href="#/addShow">addShow</a></li>-->
+  <!--</ul>-->
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+
+  <div class="container-fluid" style='padding-top: 50px; padding-left: 30px;'>
+  <div ng-view></div>
+  </div>
+
+
+
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!--&lt;!&ndash; Placed at the end of the document so the pages load faster &ndash;&gt;-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+  <!--&lt;!&ndash; Latest compiled and minified JavaScript (For Bootstrap) &ndash;&gt;-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+  <!-- Angular CDN (commented out until production)-->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>-->
+    <script src="../assets/js/angular.js"></script>
+        <!-- ngRoute for angular-->
+  <script src="../assets/js/angular-route.min.js"></script>
+
+
+  <!-- Local Static files-->
+  <script src="app.js"></script>
+  <script src="home/home.js"></script>
+  <script src="addShow/addShow.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

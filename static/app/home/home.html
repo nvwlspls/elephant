@@ -1,0 +1,49 @@
+<div class = "row" style="padding-bottom: 20px;">
+    <div class = "col-md-5"><h1>Welcome To Moogit</h1></div>
+    <div class = "col-md-2"><h4>a place for shows</h4></div>
+</div>
+
+
+<div class="table" ng-controller="homeCtrl">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Bands</th>
+                <th>Venue</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Age</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="show in shows">
+                <td><p ng-repeat="band in show.bands"> {{band}}</p></td>
+                <td>{{show.venue}}</td>
+                <td>{{show.date | date}}</td>
+                <td>{{show.date | date : 'shortTime' : a }}</td>
+                <td>{{show.age}}</td>
+                <td>{{show.price | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
