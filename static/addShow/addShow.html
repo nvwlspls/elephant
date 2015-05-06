@@ -1,25 +1,58 @@
-<div class="jumbotron">
-    <div class="container">
-        <div class="col-md-9">
-            <div class="container">
-                <div class="row" style="padding-bottom: 20px;" >
-                    <div class="col-md-9">
-                        <div class="container">
-                            <h2 class="text-center">Show Information:</h2>
+<div ng-controller="addShowCtrl">
+    <div class="col-md-12">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row" style="padding-bottom: 20px;" >
+                        <div class="col-md-12">
+                            <div class="container">
+                                <h2 class="text-center">Show Information:</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="container"><p>Date:</p>
+                             <input type="date" placeholder="Date"></div></div>
+                        <div class="col-md-4">
+                            <div class="container"><p>Time:</p><input type="time" placeholder="Time"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container"><p>Venue</p><select class="form-control"></select></div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="container"><p>Date:</p>
-                         <input type="date" placeholder="Date"></div></div>
-                    <div class="col-md-3">
-                        <div class="container"><p>Time:</p><input type="time" placeholder="Time"></div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="container"><p>Venue</p><select class="form-control"></select></div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-12">
+        <div class="jumbotron">
+            <div class="container">
+                <form novalidate class="form">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Name</th>
+                                <th>State</th>
+                                <th>Genre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="band in bands">
+                            <td>{{ $index + 1 }}</td>
+                            <td> <input type="text" class="form-control" name=""></td>
+                            <td><select class="form-control"></select></td>
+                            <td><select class="form-control"></select> </td>
+                            <td><a ng-click="removeBand( $index )"><p>Remove Band</p></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        <button class="add-another" ng-click="addNewBand()">Add Band</button>
+                </form>
             </div>
         </div>
     </div>
