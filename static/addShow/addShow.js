@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('moogitShows.addShow', ['ngRoute'])
+angular.module('moogitShows.addShow', ['ngRoute', "angucomplete"])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/addShow', {
@@ -15,6 +15,9 @@ angular.module('moogitShows.addShow', ['ngRoute'])
                 id : ''
             },{
                 id :''
+            },
+            {
+                id : ''
             }
         ]
 
@@ -27,5 +30,6 @@ angular.module('moogitShows.addShow', ['ngRoute'])
         $scope.removeBand = function(bandIndex) {
             $scope.bands.splice(bandIndex, 1)
         }
+
 
     }])

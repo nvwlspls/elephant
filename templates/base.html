@@ -18,7 +18,9 @@
   <!-- Local CSS Changes-->
   <link rel="stylesheet" href="../static/app.css">
 
+    <script type="text/javascript">var bands ='{{ bands|safe }}'</script>
 </head>
+
 {% verbatim %}
 <body ngApp="moogitShows">
   <div>
@@ -77,8 +79,8 @@
     <script src="../static/assets/js/angular.js"></script>
         <!-- ngRoute for angular-->
   <script src="../static/assets/js/angular-route.min.js"></script>
-
-
+   <!-- autocomplte for angular -->
+    <script src="../static/assets/js/angucomplete.js"></script>
   <!-- Local Static files-->
   <script src="../static/app.js"></script>
   <script src="../static/home/home.js"></script>

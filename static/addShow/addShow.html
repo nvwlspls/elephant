@@ -19,7 +19,7 @@
                             <div class="container"><p>Time:</p><input type="time" placeholder="Time"></div>
                         </div>
                         <div class="col-md-4">
-                            <div class="container"><p>Venue</p><select class="form-control"></select></div>
+                            <div class="container"><p>Venue:</p><select class="form-control"></select></div>
                         </div>
                     </div>
                 </div>
@@ -44,14 +44,17 @@
                         <tbody>
                             <tr ng-repeat="band in bands">
                             <td>{{ $index + 1 }}</td>
-                            <td> <input type="text" class="form-control" name=""></td>
+                            <td>
+
+                            </td>
                             <td><select class="form-control"></select></td>
                             <td><select class="form-control"></select> </td>
-                            <td><a ng-click="removeBand( $index )"><p>Remove Band</p></a></td>
+                            <td><a ng-click="removeBand( $index )"><p>Remove</p></a></td>
                             </tr>
                         </tbody>
                     </table>
-                        <button class="add-another" ng-click="addNewBand()">Add Band</button>
+                        <button class="btn-default" ng-click="addNewBand()">Add Another Band</button>
+                        <button class="btn-success" ng-click="">Submit Show</button>
                 </form>
             </div>
         </div>
