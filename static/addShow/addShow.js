@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('moogitShows.addShow', ['ngRoute', "angucomplete"])
+angular.module('moogitShows.addShow', ['ngRoute', "angucomplete-alt"])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/addShow', {
