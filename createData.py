@@ -1,5 +1,44 @@
 __author__ = 'waynejessen'
 
+from faker import Factory
+
+import random, time
+
+from shows.models import band, show, showOrder, venue, contact
+
+fake = Factory.create()
+
+def insertband(name, bandHomeTown, bandHomeState, bandGenre):
+    """to create and save a band object """
+    from shows.models import band
+    b= band(bandName=name,
+            bandHomeTown=bandHomeTown,
+            bandHomeState=bandHomeState,
+            bandGenre=bandGenre)
+    b.save()
+
+def insertvenue(name, venuecontact , venuedescription, venuearea, venueneighborhood,
+                venuestreetaddress, venuecity, venuestate, venuezip, venuephone):
+    """to create and save a Venue Object"""
+    from shows.models import Venue
+    v = venue(venueName=name,
+              venueContact=venuecontact,
+              venueDescription=venuedescription,
+              area=venuearea,
+              neighborhood=venueneighborhood,
+              streetAddress=venuestreetaddress,
+              city=venuecity,
+              state=venuestate)
+    v.save()
+
+def insertcontact(contactemail, contactfirstname, contactlastname, contanctnickname):
+    """to create and save a contact object"""
+    from shows.models import contact
+    c = contact(contactEmail:contactemail,
+                contactFirstName:contactfirstname,
+                contactLastName:contactlastname,
+                contactNickname:contactnickname)
+    c.save()
 
 
 
