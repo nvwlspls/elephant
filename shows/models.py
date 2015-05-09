@@ -32,9 +32,9 @@ class venue(models.Model):
     venueLastMod = models.DateTimeField(auto_now = True)
     venueStreetAddress = models.CharField(max_length = 150, null=True)
     venueCity = models.CharField(max_length = 150, null=True)
-    venueState = models.CharField( max_length = 50, null=True)
-    venueZipCode = models.CharField(max_length = 9, null = True)
-    venuePhone = USPhoneNumberField()
+    venueState = models.CharField( max_length=50, null=True)
+    venueZipCode = models.CharField(max_length=9, null = True)
+    venuePhone = models.CharField(max_length=50, null=True)
     venueContact = models.ForeignKey('contact', related_name = 'contact2', null=True)
 
     def __unicode__(self):
