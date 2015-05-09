@@ -115,7 +115,6 @@ def createandsavevenue():
 def insertcontact(contactemail, contactfirstname, contactlastname, contanctnickname):
     """to create and save a contact object"""
     from shows.models import contact
-
     c = contact(contactEmail=contactemail,
                 contactFirstName=contactfirstname,
                 contactLastName=contactlastname,
@@ -126,7 +125,6 @@ def insertcontact(contactemail, contactfirstname, contactlastname, contanctnickn
 def createcontact():
     """create and save a faux contact"""
     from faker import Factory
-
     fake = Factory.create()
     email = fake.free_email()
     firstname = fake.first_name()
@@ -226,3 +224,15 @@ def getallvenues():
     for v in allvenues:
         venuelist.append(v)
     return venuelist
+
+for i in range(1, 500):
+    createAndSaveContact()
+
+for i in range(1, 500):
+    createandsavevenue()
+
+for i in range(1, 10000):
+    createandinsertband()
+
+for i in range(1, 1000):
+    createandsaveshow()
