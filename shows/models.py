@@ -10,7 +10,7 @@ class contact(models.Model):
     contactEmail = models.EmailField(max_length = 100, primary_key = True)
     contactFirstName = models.CharField(max_length = 100)
     contactLastName = models.CharField(max_length = 100, null=True)
-    contctNickname = models.CharField(max_length = 100, null=True)
+    contactNickname = models.CharField(max_length = 100, null=True)
 
 class venue(models.Model):
     AREA_CHOICES = (
