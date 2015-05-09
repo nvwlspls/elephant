@@ -14,7 +14,6 @@ fake = Factory.create('en_US')
 def insertband(name, bandHomeTown, bandHomeState, bandGenre):
     """to create and save a band object """
     from shows.models import band
-
     b = band(bandName=name,
              bandHomeTown=bandHomeTown,
              bandHomeState=bandHomeState,
@@ -142,17 +141,58 @@ def createAndSaveContact():
     insertcontact(contact[0], contact[1], contact[2], contact[3])
 
 
-def insertshow(showvenueid, showdate, showtime, showbands, showbandextratext, showage, showcost,
-               showorders):
+"""show/showorder insert and save group"""
+
+
+def insertshow(showvenueid, showdate, showtime, showbands, showbandextratext, showage, showcost):
     """create a new show"""
     from shows.models import show, showOrder
-
-    s = show(showVenueID=showvenueid,
+    s=show(showVenueID=showvenueid,
              showDate=showdate,
              showTime=showtime,
              showBandExtraText=showbandextratext,
              showAge=showage,
              showCost=showcost)
+    s.save()
+    for index, band in enumerate(showbands):
+        s.showBands.add(band)
+        so = showOrder(showOrderOrder=index+1,
+                       showOrderShowID=s,
+                       showOrderBandID=band)
+        so.save()
+    s.save()
+
+def createshow():
+    """create a random show with existing bands and venues"""
+    from shows.models import band, venue
+    import random
+    from faker import Factory
+    fake = Factory.create("en_US")
+    time=fake.time()
+    date=fake.date()
+    extratext=fake.paragraphs(nb=3)
+    age=random.choice(['All', '18+', '21+'])
+    cost=fake.random_int(min=0, max=20)
+    venue = random.choice(venue.objects.all())
+    bands = []
+    numbands = fake.random_int(min=1, max=10)
+    for i in range(0, numbands):
+        randband=random.choice(band.objects.all())
+        bands.append(randband)
+    return [venue, date, time, bands, extratext, age, cost]
+
+def createandsaveshow():
+    """create a show and save it using other functions"""
+    createdshow = createshow()
+    insertshow(createdshow[0],
+               createdshow[1],
+               createdshow[2],
+               createdshow[3],
+               createdshow[4],
+               createdshow[5],
+               createdshow[6])
+
+
 
 
 """Get all contact emails"""
@@ -176,3 +216,13 @@ def getallgenres():
     for g in allgenres:
         genreslist.append(g)
     return genreslist
+
+"""get all venues"""
+def getallvenues():
+    """return all the venues in a list"""
+    from shows.models import venue
+    allvenues=venue.objects.all()
+    venuelist = []
+    for v in allvenues:
+        venuelist.append(v)
+    return venuelist

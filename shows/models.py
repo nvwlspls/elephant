@@ -63,6 +63,9 @@ class showOrder(models.Model):
     class Meta:
         ordering = ['showOrderOrder']
 
+    def __unicode__(self):
+        return unicode(str(self.showOrderOrder) + "-" +str(self.showOrderBandID.bandName))
+
 
 class show(models.Model):
     showID = models.AutoField(primary_key = True)
@@ -78,6 +81,12 @@ class show(models.Model):
     showCost = models.DecimalField(max_digits = 5, decimal_places = 2)
 
     def __unicode__(self):
-       return unicode(self.show2ID) 
+       return unicode(str(self.showVenueID.venueName)+ "-" + str(self.showDate))
 
 
+class genre(models.Model):
+    genreID = models.AutoField(primary_key=True)
+    genreName = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return unicode(self.genreName)
