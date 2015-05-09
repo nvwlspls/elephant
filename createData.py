@@ -8,6 +8,8 @@ from shows.models import band, show, showOrder, venue, contact
 
 fake = Factory.create('en_US')
 
+"""create and insert band group"""
+
 
 def insertband(name, bandHomeTown, bandHomeState, bandGenre):
     """to create and save a band object """
@@ -18,6 +20,27 @@ def insertband(name, bandHomeTown, bandHomeState, bandGenre):
              bandHomeState=bandHomeState,
              bandGenre=bandGenre)
     b.save()
+
+def createband():
+    """create a band using faker and return a list of attributes"""
+    from faker import Factory
+    from shows.models import genre
+    fake=Factory.create('en_US')
+    bandname=fake.company()
+    bandtown=fake.city()
+    bandstate=fake.state()
+    genrelist=getallgenres()
+    randomgenre=fake.random_int(min=0, max=len(genrelist)-1)
+    genre=genrelist[randomgenre]
+    return [bandname, bandtown, bandstate, genre]
+
+def createandinsertband():
+    """create and insert band"""
+    randband = createband()
+    insertband(randband[0],
+               randband[1],
+               randband[2],
+               randband[3])
 
 
 """venue insert and save group"""
@@ -143,3 +166,13 @@ def getcontactemails():
     for c in allcontacts:
         contactEmails.append(c.contactEmail)
     return contactEmails
+
+"""get all genres"""
+def getallgenres():
+    """return all the genreNames in a list"""
+    from shows.models import genre
+    allgenres=genre.objects.all()
+    genreslist = []
+    for g in allgenres:
+        genreslist.append(g)
+    return genreslist
