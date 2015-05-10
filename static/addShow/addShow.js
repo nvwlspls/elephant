@@ -10,7 +10,7 @@ angular.module('moogitShows.addShow', ['ngRoute', "angucomplete-alt"])
 }])
 
 .controller('addShowCtrl', ['$scope', function($scope) {
-        $scope.bands = [
+        $scope.showBands = [
             {
                 id : ''
             },{

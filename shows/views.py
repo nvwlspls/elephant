@@ -50,3 +50,15 @@ class getshows(View):
         showslist = serializers.serialize("json", shows, use_natural_foreign_keys=True)
 
         return HttpResponse(showslist)
+
+class matchbands(View):
+    """
+    match bands from the text search field
+    """
+    def get(self, request, bandtext ,*args, **kwargs):
+        from shows.models import band
+        bandlist=band.objects.filter(bandName__contains=bandtext)
+
+        jsonbandslist=serializers.serialize("json", bandlist, use_natural_foreign_keys=True)
+
+        return HttpResponse(jsonbandslist)

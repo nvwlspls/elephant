@@ -42,9 +42,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="band in bands">
+                            <tr ng-repeat="band in showBands">
                             <td>{{ $index + 1 }}</td>
-                            <td>
+                            <td><angucomplete-alt id="bandnamecomplete"
+                                                  placeholder="Band Name"
+                                                  pause="400"
+                                                  selected-object="bandObj"
+                                                  remote-url="/shows/bandlist/"
+                                                  title-field="fields.bandName"
+                                                  description-field="bandname"
+                                                  input-class="form-control form-control-small"
+                                                    minlength="2"></angucomplete-alt>
 
                             </td>
                             <td><select class="form-control"></select></td>
