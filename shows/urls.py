@@ -1,6 +1,7 @@
 __author__ = 'waynejessen'
 
-"""elephant URL Configuration
+"""
+elephant URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -15,10 +16,11 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, patterns
 
-from shows.views import angularHome
+from shows.views import getshows, angularHome
 
-urlpatterns = [
-    url(r'^$', angularHome.as_view(), name='home'),
-]
+urlpatterns = patterns('',
+               url(r'^getshows/', getshows.as_view(), name='getshows'),
+
+)

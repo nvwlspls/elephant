@@ -15,6 +15,10 @@ class contact(models.Model):
     def __unicode__(self):
         return str(str(self.contactFirstName) + " " + str(self.contactLastName))
 
+class venueManager(models.Manager):
+    def get_by_natural_key(self, venueName, venueID):
+        return self.get(venueName=venueName, venueID=venueID)
+
 class venue(models.Model):
     AREA_CHOICES = (
         ("NC", "North County"),
@@ -22,6 +26,8 @@ class venue(models.Model):
         ("CC", "Central"),
         ("SB", "South Boy") 
     )
+
+    objects = venueManager()
 
     venueID = models.AutoField(primary_key = True)
     venueName = models.CharField(max_length = 75,
@@ -41,7 +47,17 @@ class venue(models.Model):
     venueContact = models.ForeignKey('contact', related_name = 'contact2', null=True)
 
     def __unicode__(self):
-       return unicode(self.venueName)  
+       return unicode(self.venueName)
+
+    def natural_key(self):
+        return (self.venueName)
+
+    class Meta:
+        unique_together = (('venueName', 'venueID'),)
+
+class bandManager:
+    def get_by_natural_key(self, bandName, bandID):
+        return self.get(bandName=bandName, bandID=bandID)
 
 class band(models.Model):
     bandID = models.AutoField(primary_key=True)
@@ -55,7 +71,13 @@ class band(models.Model):
     bandDateMod = models.DateTimeField(auto_now=True)
     
     def __unicode__(self):
-       return unicode(self.bandName) 
+       return unicode(self.bandName)
+
+    def natural_key(self):
+        return (self.bandName)
+
+    class Meta:
+        unique_together = (('bandName', 'bandID'),)
 
 class showOrder(models.Model):
     showOrderID = models.AutoField(primary_key = True)

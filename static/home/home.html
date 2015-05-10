@@ -18,12 +18,12 @@
         </thead>
         <tbody>
             <tr ng-repeat="show in shows">
-                <td><p ng-repeat="band in show.bands"> {{band}}</p></td>
-                <td>{{show.venue}}</td>
-                <td>{{show.date | date}}</td>
-                <td>{{show.date | date : 'shortTime' : a }}</td>
-                <td>{{show.age}}</td>
-                <td>{{show.price | currency}}</td>
+                <td><p ng-repeat="band in show.fields.showBands"> {{band}}</p></td>
+                <td>{{show.fields.showVenueID}}</td>
+                <td>{{show.fields.showDate | date }}</td>
+                <td>{{show.fields.showTime | date : 'shortTime'}}</td>
+                <td>{{show.fields.showAge}}</td>
+                <td>{{show.fields.showCost | currency}}</td>
             </tr>
         </tbody>
     </table>

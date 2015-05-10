@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="../static/assets/css/angucomplete-alt.css">
 </head>
 
-
+{%  verbatim %}
 <body ngApp="moogitShows">
   <div>
   <div class="container" style="padding: 10px">
@@ -62,7 +62,7 @@
   <div ng-view></div>
   </div>
 
-
+{%  endverbatim %}
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -85,6 +85,7 @@
   <script src="../static/home/home.js"></script>
   <script src="../static/addShow/addShow.js"></script>
 
-
+  <!-- services-->
+  <script src="../static/home/homeservice.js"></script>
 </body>
 </html>

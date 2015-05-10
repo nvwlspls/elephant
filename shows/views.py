@@ -32,7 +32,7 @@ class getshows(View):
     """
     class to retrieve shows and return them in a json format
     """
-    def get(selfself, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         from shows.models import show
         # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
         futureshows=show.objects.filter(showDate__gte='2005-01-01')
@@ -47,7 +47,6 @@ class getshows(View):
         except EmptyPage:
             shows=p.page(p.num_pages)
 
-        showslist = serializers.serialize("json", shows)
+        showslist = serializers.serialize("json", shows, use_natural_foreign_keys=True)
 
-        return showslist
-
+        return HttpResponse(showslist)
