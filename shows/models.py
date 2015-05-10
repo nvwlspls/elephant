@@ -12,6 +12,9 @@ class contact(models.Model):
     contactLastName = models.CharField(max_length = 100, null=True)
     contactNickname = models.CharField(max_length = 100, null=True)
 
+    def __unicode__(self):
+        return str(str(self.contactFirstName) + " " + str(self.contactLastName))
+
 class venue(models.Model):
     AREA_CHOICES = (
         ("NC", "North County"),

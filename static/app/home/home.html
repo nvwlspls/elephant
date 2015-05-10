@@ -17,6 +17,7 @@
             </tr>
         </thead>
         <tbody>
+        {% verbatim %}
             <tr ng-repeat="show in shows">
                 <td><p ng-repeat="band in show.bands"> {{band}}</p></td>
                 <td>{{show.venue}}</td>
@@ -25,23 +26,9 @@
                 <td>{{show.age}}</td>
                 <td>{{show.price | currency}}</td>
             </tr>
+        {% endverbatim %}
         </tbody>
     </table>
-</div>
-
-
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-
 </div>
 
 
