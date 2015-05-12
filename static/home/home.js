@@ -1,18 +1,20 @@
 'use strict';
 
-angular.module('moogitShows.home', ['ngRoute'])
+angular.module('moogitShows.home', ['ngRoute',
+                                    'infinite-scroll'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {
     templateUrl: 'static/home/home.html',
     controller: 'homeCtrl'
-  });
+  })
+  ;
 }])
 
-.controller('homeCtrl', [ '$scope', 'getshows' ,function($scope, getshows) {
-      $scope.title = "Scope Title";
+.controller('homeCtrl', [ '$scope', 'getshows', function($scope, getshows) {
 
-        getshows.success(function(data){
-            $scope.shows = data;
-        })
+        $scope.shows = new Shows();
+
 }]);
+
+

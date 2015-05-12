@@ -21,7 +21,7 @@ from django.conf.urls import url, patterns
 from shows.views import getshows, matchbands
 
 urlpatterns = patterns('',
-               url(r'^getshows/', getshows.as_view(), name='getshows'),
-               url(r'^bandlist/(?P<bandtext>\w+)', matchbands.as_view(), name="matchbands"),
+               url(r'^getshows/(?P<pagenum>\d+)/', getshows.as_view(), name='getshows'),
+               url(r'^bandlist/(?P<bandtext>\w+)/', matchbands.as_view(), name="matchbands"),
 
 )

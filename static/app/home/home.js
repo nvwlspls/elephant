@@ -30,5 +30,6 @@ angular.module('moogitShows.home', ['ngRoute'])
         }
 
       ];
+      $scope.page = 1
 
 }]);

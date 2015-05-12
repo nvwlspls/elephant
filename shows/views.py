@@ -32,14 +32,13 @@ class getshows(View):
     """
     class to retrieve shows and return them in a json format
     """
-    def get(self, request, *args, **kwargs):
+    def get(self, request, pagenum, *args, **kwargs):
         from shows.models import show
         # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
         futureshows=show.objects.filter(showDate__gte='2005-01-01')
         orderedfutureshows=sorted(futureshows, key=lambda i:i.showDate)
         p = Paginator(orderedfutureshows, 20)
-        # requestpage = request.GET.get('page')
-        requestpage=1
+        requestpage=pagenum
         try:
             shows=p.page(requestpage)
         except PageNotAnInteger:
@@ -57,7 +56,7 @@ class matchbands(View):
     """
     def get(self, request, bandtext ,*args, **kwargs):
         from shows.models import band
-        bandlist=band.objects.filter(bandName__contains=bandtext)
+        bandlist=band.objects.filter(bandName__icontains=bandtext)
 
         jsonbandslist=serializers.serialize("json", bandlist, use_natural_foreign_keys=True)
 

@@ -22,7 +22,7 @@ angular.module('moogitShows.addShow', ['ngRoute', "angucomplete-alt"])
         ]
 
         $scope.addNewBand = function() {
-            $scope.bands.push({
+            $scope.showBands.push({
                 id :''
             })
         }
