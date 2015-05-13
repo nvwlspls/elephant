@@ -11,10 +11,24 @@ angular.module('moogitShows.home', ['ngRoute',
   ;
 }])
 
-.controller('homeCtrl', [ '$scope', 'getshows', function($scope, getshows) {
+.controller('homeCtrl', [ '$scope', 'getshows', 'futureshows',
+        function($scope, getshows, futureshows) {
 
-        $scope.shows = new Shows();
+        $scope.shows = []
 
+        futureshows.success(function(data){
+            $scope.futureshows = data;
+        })
+
+
+
+            
+        //$scope.loadmore = function(){
+        //    var last = $scope.futureshows;
+        //    for(var i =1; i <=10; i++){
+        //        $scope.shows.push(last + 1);
+        //    }
+        //}
 }]);
 
 

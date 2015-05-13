@@ -4,36 +4,9 @@
 </div>
 
 
-<div class="table" ng-controller="homeCtrl">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Bands</th>
-                <th>Venue</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Age</th>
-                <th>Cost</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="show in shows">{{ shows }}
-                {{ show }}
-                <td><p ng-repeat="band in show.fields.showBands"> {{band}}</p></td>
-                <td>{{show.fields.showVenueID}}</td>
-                <td>{{show.fields.showDate | date }}</td>
-                <td>{{show.fields.showTime | date : 'shortTime'}}</td>
-                <td>{{show.fields.showAge}}</td>
-                <td>{{show.fields.showCost | currency}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="col-md-10"><h2><a >Get more shows!</a></h2></div>
+<div infinite-scroll="loadmore()" infinite-scoll-distance="2">
+    <p ng-repeat="show in shows"></p>
 </div>
-
-
-
-
 
 
 

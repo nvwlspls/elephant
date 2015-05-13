@@ -61,3 +61,14 @@ class matchbands(View):
         jsonbandslist=serializers.serialize("json", bandlist, use_natural_foreign_keys=True)
 
         return HttpResponse(jsonbandslist)
+
+class getfutureshows(View):
+    """
+    A class to retrieve all shows who's time is in the FUTURE!!!!
+    """
+    def get(selfself, request, *args, **kwargs):
+        from shows.models import show
+        # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
+        futureshows=show.objects.filter(showDate__gte='2005-01-01')
+
+        return HttpResponse(serializers.serialize("json", futureshows))
