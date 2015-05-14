@@ -71,4 +71,4 @@ class getfutureshows(View):
         # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
         futureshows=show.objects.filter(showDate__gte='2005-01-01')
 
-        return HttpResponse(serializers.serialize("json", futureshows))
+        return HttpResponse(serializers.serialize("json", futureshows, use_natural_foreign_keys=True))

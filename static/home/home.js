@@ -14,21 +14,22 @@ angular.module('moogitShows.home', ['ngRoute',
 .controller('homeCtrl', [ '$scope', 'getshows', 'futureshows',
         function($scope, getshows, futureshows) {
 
-        $scope.shows = []
+        $scope.shows = [];
 
         futureshows.success(function(data){
+           //$scope.shows =  $scope.shows.concat(data)
             $scope.futureshows = data;
+
+            $scope.loadmore = function (){
+                var last =  $scope.futureshows[$scope.futureshows.length -1 ];
+                console.log("apples")
+                $scope.shows.push(last)
+                console.log($scope.loadmore())
+                console.log(last)
+            }
+
         })
 
-
-
-            
-        //$scope.loadmore = function(){
-        //    var last = $scope.futureshows;
-        //    for(var i =1; i <=10; i++){
-        //        $scope.shows.push(last + 1);
-        //    }
-        //}
 }]);
 
 

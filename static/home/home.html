@@ -4,9 +4,15 @@
 </div>
 
 
-<div infinite-scroll="loadmore()" infinite-scoll-distance="2">
-    <p ng-repeat="show in shows"></p>
+<div infinite-scroll="loadmore()" infinite-scroll-distance="2">
+        <h3 ng-repeat="show in shows">
+            {{ show }}
+    </h3>
+
+
 </div>
+
+
 
 
 
