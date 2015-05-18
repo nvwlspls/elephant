@@ -108,6 +108,19 @@ class show(models.Model):
     def __unicode__(self):
        return unicode(str(self.showVenueID.venueName)+ "-" + str(self.showDate))
 
+    def as_json(self):
+        return dict(
+            showID=self.showID,
+            showVenueName=self.showVenueID,
+            showDate=self.showDate,
+            showTime=self.showTime,
+            showBands=self.showBands.all(),
+            showOrders=self.showOrders.all(),
+            showBandExtraText=self.showBandExtraText,
+            showAge=self.showAge,
+            showCost=self.showCost
+        )
+
 
 class genre(models.Model):
     genreID = models.AutoField(primary_key=True)

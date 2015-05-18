@@ -4,13 +4,12 @@
 </div>
 
 
-<div infinite-scroll="loadmore()" infinite-scroll-distance="2">
-        <h3 ng-repeat="show in shows">
-            {{ show }}
-    </h3>
+    <div ng-repeat="show in shows | limitTo: showLimit">
+        <h1>Ready</h1>
+          Venue:  {{ show.fields.showVenueID }}
+    </div>
+<a class="btn-default" ng-click="showLimit = showLimit +20">Apples</a>
 
-
-</div>
 
 
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('moogitShows.home', ['ngRoute',
-                                    'infinite-scroll'])
+                                    'ngResource','homeservice'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/home', {
@@ -11,35 +11,20 @@ angular.module('moogitShows.home', ['ngRoute',
   ;
 }])
 
-.controller('homeCtrl', [ '$scope', 'getshows', 'futureshows',
-        function($scope, getshows, futureshows) {
+.controller('homeCtrl', function homeCtrl($scope, Shows) {
 
-            $scope.shows = [];
-            $scope.futureshowslist = [];
-            $scope.showsPage = 1;
+        $scope.shows = [];
+        $scope.showLimit = 0;
 
-            $scope.loadmore = function() {
-                //var last = $scope.futureshowslist;
-                //$scope.shows.push(last);
-                $scope.shows = $scope.shows.concat($scope.futureshowslist)
-                }
+        Shows.query( function(response){
+            $scope.shows = response;
+            $scope.showLimit+= 20;
+            $scope.visShows= $scope.shows.slice(0, $scope.showLimit)
+        });
 
-            futureshows.success(function (data) {
-                    $scope.futureshowslist = data;
-                    $scope.loadmore()
-                }
-            )
-
-            getshows.success(function(data){
-                $scope.futureshowslist = data;
-                $scope.loadmore()
-                $scope.futureshowslist = [];
-            })
+        $scope.viewMore = function () {
+            $scope.showLimit+=20;
+        };
 
 
-
-
-        }
-    ]);
-
-
+    })

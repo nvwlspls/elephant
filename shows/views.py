@@ -37,6 +37,13 @@ class getshows(View):
         # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
         futureshows=show.objects.filter(showDate__gte='2005-01-01')
         orderedfutureshows=sorted(futureshows, key=lambda i:i.showDate)
+
+        futureshowsdict = {}
+
+        for i in orderedfutureshows:
+            futureshows[i.showID] = i.as_json()
+
+
         p = Paginator(orderedfutureshows, 20)
         requestpage=pagenum
         try:
@@ -49,6 +56,7 @@ class getshows(View):
         showslist = serializers.serialize("json", shows, use_natural_foreign_keys=True)
 
         return HttpResponse(showslist)
+        # return HttpResponse("<h1>a[[</h1>")
 
 class matchbands(View):
     """
@@ -68,7 +76,8 @@ class getfutureshows(View):
     """
     def get(selfself, request, *args, **kwargs):
         from shows.models import show
-        # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
+        # # futureshows=shows.objects.filter(showDate__gte=datetime.datetime.now())
         futureshows=show.objects.filter(showDate__gte='2005-01-01')
+        orderedfutureshows =sorted(futureshows, key=lambda i:i.showDate)
 
-        return HttpResponse(serializers.serialize("json", futureshows, use_natural_foreign_keys=True))
+        return HttpResponse(serializers.serialize("json", orderedfutureshows, use_natural_foreign_keys=True))
